@@ -19,6 +19,25 @@ The Hospital Management System is a comprehensive desktop application developed 
 - **SQLite:** A lightweight and versatile database engine, perfect for local application storage and retrieval.
 - **Entity Framework:** Simplifies database interactions by providing an object-relational mapping (ORM) framework, enhancing development productivity.
 
+## Project Walkthrough
+
+Here are some walkthrough gifs to demonstrate key functionalities of the Hospital Management System:
+
+### Switching Between Tabs
+![switchin-between-tabs](https://github.com/PasanAbeysekara/Hospital-Management-System/assets/69195287/00b18bb3-60e0-4d7d-a4f9-6ec10b0fdd52)
+
+### Patient Profile
+![patient-profile](https://github.com/PasanAbeysekara/Hospital-Management-System/assets/69195287/e4201a25-4498-4a94-b55d-a3f0d4c63f80)
+
+### Edit Profile
+![edit-patient-profile](https://github.com/PasanAbeysekara/Hospital-Management-System/assets/69195287/aaab4103-c681-45c9-bcf0-6bf4786bd565)
+
+### Add Doctor
+![add-doctor](https://github.com/PasanAbeysekara/Hospital-Management-System/assets/69195287/ec3dc53b-ad45-4918-823a-862676a8cfa3)
+
+### Add Patient
+![add-patiant](https://github.com/PasanAbeysekara/Hospital-Management-System/assets/69195287/5b5e9108-9cac-4043-887a-1ef699909778)
+
 ## Getting Started
 
 ### Prerequisites
