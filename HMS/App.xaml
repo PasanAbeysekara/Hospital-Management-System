@@ -1,0 +1,52 @@
+﻿<Application x:Class="HMS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HMS"
+             xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
+             xmlns:view="clr-namespace:HMS.MVVM.View"
+             StartupUri="MVVM/View/SplashScreenWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LoginTheme.xaml"/>
+                <ResourceDictionary Source="Themes/DashboardTheme.xaml"/>
+                <ResourceDictionary Source="Themes/AddPatientTheme.xaml"/>
+                <ResourceDictionary Source="Themes/DashboardTabTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Normal User-->
+            <DataTemplate DataType="{x:Type vm:UserDashboardVM}">
+                <view:UserDashboard/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:UserAppointmentsVM}">
+                <view:UserAppointments/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:UserPatientsVM}">
+                <view:UserPatients/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:UserBillingVM}">
+                <view:UserBilling/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:UserPrescriptionsVM}">
+                <view:UserPrescriptions/>
+            </DataTemplate>
+
+            <!--Admin User-->
+            <DataTemplate DataType="{x:Type vm:AdminDoctorsVM}">
+                <view:AdminDoctors/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AdminDrugsVM}">
+                <view:AdminDrugs/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AdminTestsVM}">
+                <view:AdminTests/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AdminUsersVM}">
+                <view:AdminUsers/>
+            </DataTemplate>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

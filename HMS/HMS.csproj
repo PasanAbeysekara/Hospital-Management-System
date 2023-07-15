@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Fonts\**" />
+    <EmbeddedResource Remove="Fonts\**" />
+    <None Remove="Fonts\**" />
+    <Page Remove="Fonts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\add-doctor.mp4" />
+    <None Remove="Images\add-patient.mp4" />
+    <None Remove="Images\appointment.jpg" />
+    <None Remove="Images\appointment2.png" />
+    <None Remove="Images\blood-test.png" />
+    <None Remove="Images\doctor.png" />
+    <None Remove="Images\drug.png" />
+    <None Remove="Images\edit-profile.mp4" />
+    <None Remove="Images\hosp.png" />
+    <None Remove="Images\hosp2.png" />
+    <None Remove="Images\hospital.png" />
+    <None Remove="Images\hospitalLogo.png" />
+    <None Remove="Images\nurse.png" />
+    <None Remove="Images\patient-profile.mp4" />
+    <None Remove="Images\patient.png" />
+    <None Remove="Images\patientInfo.png" />
+    <None Remove="Images\prescription.png" />
+    <None Remove="Images\prescription2.png" />
+    <None Remove="Images\success.png" />
+    <None Remove="Images\switching-between-tabs-admin.mp4" />
+    <None Remove="Images\switching-between-tabs.mp4" />
+    <None Remove="Images\userImage.png" />
+    <None Remove="Images\warning.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\add-doctor.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\switching-between-tabs-admin.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\appointment.jpg" />
+    <Resource Include="Images\appointment2.png" />
+    <Resource Include="Images\blood-test.png" />
+    <Resource Include="Images\doctor.png" />
+    <Resource Include="Images\drug.png" />
+    <Resource Include="Images\hosp.png" />
+    <Resource Include="Images\hosp2.png" />
+    <Resource Include="Images\hospital.png" />
+    <Resource Include="Images\hospitalLogo.png" />
+    <Resource Include="Images\nurse.png" />
+    <Resource Include="Images\patient.png" />
+    <Resource Include="Images\patientInfo.png" />
+    <Resource Include="Images\prescription.png" />
+    <Resource Include="Images\prescription2.png" />
+    <Resource Include="Images\success.png" />
+    <Content Include="Images\add-patient.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\edit-profile.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\patient-profile.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\switching-between-tabs.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\userImage.png" />
+    <Resource Include="Images\warning.png" />
+  </ItemGroup>
+
+</Project>

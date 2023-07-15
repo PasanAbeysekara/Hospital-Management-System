@@ -1,0 +1,73 @@
+﻿<Window x:Class="HMS.MVVM.View.Appointments.AppointmentProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.MVVM.View.Appointments"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel.Profiles"
+        mc:Ignorable="d"
+        Title="AppointmentProfile" Height="220" Width="400"
+        Background="Transparent"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+
+    <Window.DataContext>
+        <vm:AppointmentProfile/>
+    </Window.DataContext>
+    <Grid>
+
+        <!--Background-->
+        <Border CornerRadius="10" >
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#26abff" Offset="0.0"/>
+                    <GradientStop Color="#5579c6" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!--TextBlocks-->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Appointment Profile" HorizontalAlignment="Center" FontFamily="Stencil" Margin="0,0,0,20" FontSize="18"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Text="Appointment Id : " Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Text="{Binding AppointmentId}" Grid.Column="1" Grid.Row="0"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Appointment Date : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding AppointmentDate}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Doctor ID : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DoctorId}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Doctor Name : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding DoctorName}"/>
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Patient ID : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding PatientId}"/>
+
+                    <TextBlock Grid.Column="0" Grid.Row="5" Text="Patient Name : "/>
+                    <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding PatientName}"/>
+
+                </Grid>
+                <Button Content="Close" Click="CloseButton_Clicked" Style="{StaticResource pagingButton}" Width="100" Margin="10"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

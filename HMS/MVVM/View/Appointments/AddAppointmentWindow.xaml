@@ -1,0 +1,197 @@
+﻿<Window x:Class="HMS.MVVM.View.Appointments.AddAppointmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.MVVM.View.Appointments"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uc="clr-namespace:HMS.MVVM.View.UserControls"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Add Patient" Height="450" Width="800"
+        Background="Transparent"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Window.DataContext>
+        <vm:AddAppointmentWindowVM/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+          
+            <!--Doctor dropdown box-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Border" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                <Path x:Name="Arrow" Grid.Column="1" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Data" TargetName="Arrow" Value="M 0 4 L 4 0 L 8 4 Z" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="#AFAFAF" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#FFACACAC"/>
+        <!-- Define the color of the text -->
+        <SolidColorBrush x:Key="{x:Static SystemColors.WindowTextBrushKey}" Color="#FF000000"/>
+
+        <!--TextBox style-->
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="LightGray" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--ComboBox style-->
+        <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="6,3,5,3" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                            <ToggleButton Grid.Column="1" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                ClickMode="Press" Template="{StaticResource ComboBoxToggleButtonTemplate}" />
+                            <ContentPresenter Margin="5,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                Content="{TemplateBinding SelectionBoxItem}" 
+                                IsHitTestVisible="false" />
+                            <TextBox x:Name="PART_EditableTextBox" Margin="3,3,23,3" Background="Transparent" 
+                                IsReadOnly="{TemplateBinding IsReadOnly}" 
+                                Visibility="Hidden" />
+                            <Popup x:Name="Popup" Placement="Bottom" 
+                                IsOpen="{TemplateBinding IsDropDownOpen}" 
+                                AllowsTransparency="true" 
+                                Focusable="false" 
+                                PopupAnimation="Slide">
+                                <Grid x:Name="DropDown" SnapsToDevicePixels="true" 
+                                    MinWidth="{TemplateBinding ActualWidth}" 
+                                    MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" BorderThickness="1" CornerRadius="5"
+                                        Background="White" 
+                                        BorderBrush="{StaticResource ComboBox.Static.Border}">
+                                        <ScrollViewer SnapsToDevicePixels="true">
+                                            <StackPanel IsItemsHost="true" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!--Left section-->
+
+        <Border Background="#ffd500"
+            Padding="30"
+            CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Images/appointment2.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock TextWrapping="Wrap" Text="Enter Appointment Details" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
+                <Button Style="{StaticResource buttonBlack}">
+                    <fa:ImageAwesome Icon="AngleRight" Width="25" Height="25" Foreground="#ffd500" Margin="3 0 0 0"/>
+
+                </Button>
+            </StackPanel>
+        </Border>
+
+
+        <!--Input section-->
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown" >
+            <Grid>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Appoitment Date" Style="{StaticResource text}" Margin="0 20 0 20"/>
+                    <TextBlock Grid.Row="1" Text="Doctor" Style="{StaticResource text}" Margin="0 20 0 20"/>
+
+                    <DatePicker Grid.Column="1" Grid.Row="0" SelectedDateFormat="Long" SelectedDate="{Binding AppointmentDate,Mode=TwoWay}" Style="{StaticResource datePicker}" Margin="0 20 0 20"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding DoctorName}" ItemsSource="{Binding DoctorNames,Mode=OneWay}" Margin="0 8 0 8"/>
+
+                    <Grid Grid.Column="1" Grid.Row="9" Margin="0 40 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="Cancel" Margin="0 0 10 0" Style="{StaticResource buttonMain}" Command="{Binding CloseCommand}"/>
+                        <Button Content="Save" Margin="10 0 0 0" Grid.Column="1" Style="{StaticResource buttonMainGreen}" Command="{Binding SaveCommand}"/>
+                    </Grid>
+
+
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</Window>

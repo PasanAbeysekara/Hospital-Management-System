@@ -1,0 +1,136 @@
+﻿<Window x:Class="HMS.MVVM.View.Patients.PatientProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.MVVM.View.Patients"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
+          xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="PatientProfileWindow" Height="650" Width="800"
+        WindowStartupLocation="CenterScreen"
+        >
+
+    <Window.DataContext>
+        <vm:PatientProfileVM/>
+    </Window.DataContext>
+
+    <Grid Background="#eff2f7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left Info-box-->
+        <Border Background="#3792cb" CornerRadius="0 100 0 0">
+            <StackPanel>
+                <Image Source="/Images/patientInfo.png" Width="125" Margin="10 50 10 30"/>
+                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+
+                <StackPanel Margin="0 10 0 0" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Patient Id : "/>
+                        <TextBlock Text="{Binding PatId}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Name      : "/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Age         : "/>
+                        <TextBlock Text="{Binding Age}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Gender    : "/>
+                        <TextBlock Text="{Binding Gender}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Phone      : "/>
+                        <TextBlock Text="{Binding Phone}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Address   : "/>
+                        <TextBlock Text="{Binding Address}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                        <TextBlock Text="Email       : "/>
+                        <TextBlock Text="{Binding Email}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Button  Margin="0 40 0 0" Width="100" Style="{StaticResource pagingButton}" Command="{Binding RefreshCommand}">
+                    <Button.Content>
+                        <StackPanel>
+                            <TextBlock Text="Refresh"/>
+                            <fa:ImageAwesome Icon="Refresh" Width="15" Foreground="White"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!--Right Info-box-->
+        <StackPanel Grid.Column="1">
+            <ScrollViewer Height = "600" VerticalScrollBarVisibility = "Auto">
+                <StackPanel>
+                    <!--Medical Info-->
+                    <TextBlock Text="Medical Info" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                    <Separator DockPanel.Dock="Top" Height="1" Background="#7e5fde" Width="90"/>
+                    <StackPanel Margin="0 5 0 0"  HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Weight          : "/>
+                            <TextBlock Text="{Binding Weight}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Height           : "/>
+                            <TextBlock Text="{Binding Height}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Blood Group : "/>
+                            <TextBlock Text="{Binding Blood}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <!--Appointment List-->
+                    <TextBlock Text="Appointment List" Margin="0 30 0 0" HorizontalAlignment="Center"/>
+                    <Separator DockPanel.Dock="Top" Height="3" Background="#7e5fde" Margin="0 5 0 10" Width="110"/>
+                    <DataGrid ItemsSource="{Binding Appointments}"  AutoGenerateColumns="False" Margin="100 0 100 0" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Appointment ID" Width="105"/>
+                            <DataGridTextColumn Binding="{Binding AppointedDate}" Header="Appointment Date"  Width="150"/>
+                            <DataGridTextColumn Binding="{Binding DoctorId}" Header="Doctor's ID" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Width="150" Content="Add Appointment" Style="{StaticResource pagingButton}" HorizontalAlignment="Center" Margin="0 5 0 0" Command="{Binding AddAppointmentCommand}"/>
+                    
+                    <!--Prescription List-->
+                    <TextBlock Text="Prescription List" Margin="0 30 0 0" HorizontalAlignment="Center"/>
+                    <Separator DockPanel.Dock="Top" Height="3" Background="#7e5fde" Margin="0 5 0 10" Width="100"/>
+                    <DataGrid ItemsSource="{Binding Prescriptions}"  AutoGenerateColumns="False" Margin="100 0 100 0" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" Header="Prescription ID"  Width="100"/>
+                            <DataGridTextColumn Binding="{Binding PrescribedDate}" Header="Prescribed Date"  Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Width="120" Content="Add Prescription" Style="{StaticResource pagingButton}" HorizontalAlignment="Center" Margin="0 5 0 0" Command="{Binding AddPrescriptionCommand}"/>
+                   
+                    <!--Billing-->
+                    <TextBlock Text="Bill" Margin="0 30 0 0" HorizontalAlignment="Center"/>
+                    <Separator DockPanel.Dock="Top" Height="3" Background="#7e5fde" Margin="0 5 0 10" Width="40"/>
+                    <StackPanel HorizontalAlignment="Center" Width="211">
+                        <Separator Margin="0 5 375 0" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Margin="0 5 0 0"  HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding DoctorFee}" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding TestFee}" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                        <Separator Margin="0 5 0 0" Width="180" Height="1" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding HospitalFee}" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding TotalFee}" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                        <Separator Margin="0 5 0 0" Width="180" Height="1" HorizontalAlignment="Center"/>
+                        <Separator Margin="0 5 0 0" Width="180" Height="1" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Window>

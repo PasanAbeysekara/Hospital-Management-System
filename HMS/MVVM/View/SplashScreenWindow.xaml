@@ -1,0 +1,110 @@
+﻿<Window x:Class="HMS.MVVM.View.SplashScreenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.MVVM.View"
+        mc:Ignorable="d"
+        Title="SplashScreenWindow" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#FF212021">
+
+
+    <Grid>
+
+        <Path Data="M 935.2 763.7 c 1.2 -3.4 1.8 -7.1 1.8 -11 V 349.8 c 0 -19.1 -15.5 -34.6 -34.6 -34.6 H 709.8 v 428.9 c 0 6.9 -1.2 13.5 -3.4 19.6 h -22.6 c 1.2 -3.4 1.8 -7.1 1.8 -11 V 199.4 c 0 -19.1 -15.5 -34.6 -34.6 -34.6 H 349 c -19.1 0 -34.6 15.5 -34.6 34.6 v 553.4 c 0 3.8 0.7 7.5 1.8 11 h -22.6 c -2.2 -6.1 -3.4 -12.7 -3.4 -19.6 V 315.2 H 102.2 c -19.1 0 -34.6 15.5 -34.6 34.6 v 402.9 c 0 3.8 0.7 7.5 1.8 11 H 10 v 71.5 h 980 v -71.5 H 935.2 L 935.2 763.7 Z M 171.4 622.5 h -49.6 v -49.6 h 49.6 V 622.5 L 171.4 622.5 Z M 171.4 535.4 h -49.6 v -49.6 h 49.6 V 535.4 L 171.4 535.4 Z M 171.4 451.3 h -49.6 v -49.6 h 49.6 V 451.3 L 171.4 451.3 Z M 248.7 622.5 h -49.6 v -49.6 h 49.6 V 622.5 L 248.7 622.5 Z M 248.7 535.4 h -49.6 v -49.6 h 49.6 V 535.4 L 248.7 535.4 Z M 248.7 451.3 h -49.6 v -49.6 h 49.6 V 451.3 L 248.7 451.3 Z M 577 761.4 H 431.4 V 579.8 H 577 V 761.4 L 577 761.4 Z M 500 424.2 c -67.3 0 -121.9 -54.6 -121.9 -121.9 c 0 -67.3 54.6 -121.9 121.9 -121.9 c 67.3 0 121.9 54.6 121.9 121.9 C 621.9 369.6 567.3 424.2 500 424.2 L 500 424.2 Z M 814.8 622.5 h -49.6 v -49.6 h 49.6 V 622.5 L 814.8 622.5 Z M 814.8 535.4 h -49.6 v -49.6 h 49.6 V 535.4 L 814.8 535.4 Z M 814.8 451.3 h -49.6 v -49.6 h 49.6 V 451.3 L 814.8 451.3 Z M 892 622.5 h -49.6 v -49.6 H 892 V 622.5 L 892 622.5 Z M 892 535.4 h -49.6 v -49.6 H 892 V 535.4 L 892 535.4 Z M 892 451.3 h -49.6 v -49.6 H 892 V 451.3 L 892 451.3 Z M 530.3 272 h 46.7 v 60.5 h -46.7 v 46.7 h -60.5 v -46.7 H 423 V 272 h 46.7 v -46.7 h 60.5 V 272 L 530.3 272 Z"
+              Width="400"
+              Height="300"
+              StrokeDashOffset="0"
+              StrokeThickness="5"
+              Stretch="Fill"
+              StrokeStartLineCap="Triangle"
+              StrokeEndLineCap="Triangle"
+              StrokeDashArray="500"
+              x:Name="MyPath"
+              
+              SnapsToDevicePixels="True">
+            <Path.Stroke>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop x:Name="B1" Color="#394867" Offset="0.0"/>
+                    <GradientStop x:Name="B2" Color="Beige" Offset="1.1"/>
+                </LinearGradientBrush>
+            </Path.Stroke>
+
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="MyPath"
+                                             Storyboard.TargetProperty="StrokeDashOffset"
+                                             From="500" To="0"
+                                             Duration="0:0:11"
+                                             BeginTime="0:0:0"/>
+                            <DoubleAnimation Storyboard.TargetName="B1"
+                                             Storyboard.TargetProperty="Offset"
+                                             From="0.0" To="1.1"
+                                             AutoReverse="True"
+                                             BeginTime="0:0:0"
+                                             Duration="0:0:5"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <Grid>
+
+            <TextBlock Margin="200,413,170,10"
+                       Foreground="#FFFFFF"
+                       FontSize="20"
+                       FontFamily="Candara Light"
+                       x:Name="TxtAnime">
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <StringAnimationUsingKeyFrames Storyboard.TargetName="TxtAnime"
+                                                               Storyboard.TargetProperty="Text"
+                                                               BeginTime="0:0:8.5"
+                                                               Duration="0:0:14">
+                                    <DiscreteStringKeyFrame Value="" KeyTime="0:0:0"/>
+                                    <DiscreteStringKeyFrame Value="H" KeyTime="0:0:0.125"/>
+                                    <DiscreteStringKeyFrame Value="H O" KeyTime="0:0:0.25"/>
+                                    <DiscreteStringKeyFrame Value="H O S" KeyTime="0:0:0.375"/>
+                                    <DiscreteStringKeyFrame Value="H O S P" KeyTime="0:0:0.5"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I" KeyTime="0:0:0.625"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T " KeyTime="0:0:0.75"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A" KeyTime="0:0:0.875"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L" KeyTime="0:0:1"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M" KeyTime="0:0:1.125"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A" KeyTime="0:0:1.25"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N" KeyTime="0:0:1.375"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A" KeyTime="0:0:1.5"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G" KeyTime="0:0:1.625"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E" KeyTime="0:0:1.75"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M" KeyTime="0:0:1.875"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E" KeyTime="0:0:2"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N" KeyTime="0:0:2.125"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T" KeyTime="0:0:2.25"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S" KeyTime="0:0:2.375"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S Y" KeyTime="0:0:2.5"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S Y S" KeyTime="0:0:2.625"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S Y S T" KeyTime="0:0:2.75"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S Y S T E" KeyTime="0:0:2.875"/>
+                                    <DiscreteStringKeyFrame Value="H O S P I T A L - M A N A G E M E N T - S Y S T E M" KeyTime="0:0:3"/>
+                                </StringAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBlock.Triggers>
+
+            </TextBlock>
+
+        </Grid>
+
+    </Grid>
+
+
+</Window>

@@ -1,0 +1,178 @@
+﻿<Window x:Class="HMS.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:vm="clr-namespace:HMS.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Height="720" Width="1180"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:AdminWindowVM/>
+    </Window.DataContext>
+
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_Mousedown" MouseLeftButtonDown="Border_MouseLeftButtondown">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left Menu-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button  Margin="20 28 0 35" Style="{StaticResource topButton}">
+                    <icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                </Button>
+
+                <Border Grid.Row="1" Background="#394867" CornerRadius="0 50 30 0">
+                    <DockPanel>
+                        <Border Width="80" Height="80" Padding="3" Background="White" 
+                                CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Images/hosp.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <!--Menu Titles-->
+                        <TextBlock Text="City Hospital" Foreground="White" FontSize="22" FontWeight="SemiBold"
+                                       DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <TextBlock Text="Colombo, Sri Lanka" Foreground="#d0bfff" FontSize="14" FontWeight="SemiBold"
+                                       DockPanel.Dock="Top" TextAlignment="Center"/>
+
+                        <!--Menu Separator-->
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="1" Background="#7e5fde"/>
+
+                        <!--Menu Buttons-->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button Style="{StaticResource menuButton}" Command="{Binding UserDashboardViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <icon:PackIconMaterial Kind="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Dashboard"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Command="{Binding AdminDoctorsViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <icon:PackIconMaterial Kind="MotherNurse" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Doctors"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Command="{Binding AdminDrugsViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <icon:PackIconMaterial Kind="MedicalBag" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Drugs"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Command="{Binding AdminTestsViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <icon:PackIconMaterial Kind="TestTube" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Tests"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButton}" Command="{Binding AdminUsersViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <icon:PackIconMaterial Kind="Account" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Users"/>
+                                </StackPanel>
+                            </Button>
+
+                        </StackPanel>
+
+                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" 
+                                    DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Button_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
+                                <TextBlock Text="Logout"/>
+                            </StackPanel>
+                        </Button>
+
+                    </DockPanel>
+                </Border>
+            </Grid>
+
+            <!--Main Section-->
+            <Grid Grid.Column="1" Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Top Buttons-->
+                <Button Style="{StaticResource topButton}" Margin="0 0 0 0"  HorizontalAlignment="Right" Click="CloseButton_Clicked">
+                    <icon:PackIconMaterial Kind="Close"/>
+                </Button>
+
+                <Button Style="{StaticResource topButton}" Margin="0 0 35 0" HorizontalAlignment="Right" Click="MinimizeButton_Clicked">
+                    <icon:PackIconMaterial Kind="WindowMinimize"/>
+                </Button>
+
+
+                <!-- Account status -->
+                <StackPanel Grid.Row="1" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Border Width="40" Height="40" Padding="3" Background="#9BA4B5" 
+                                CornerRadius="100" DockPanel.Dock="Top" Margin="20 0 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Images/doctor.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="Bond" Foreground="#394867" FontSize="14" FontWeight="SemiBold"
+                                       DockPanel.Dock="Top" />
+                            <TextBlock Text="Admin User" Foreground="#9BA4B5" FontSize="14" FontWeight="SemiBold"
+                                       DockPanel.Dock="Top" />
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+
+                <!--Seperator-->
+                <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
+
+                <!--Tab Buttons-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button Content="Records" Style="{StaticResource tabButton}" BorderBrush="#784ff2"/>
+                    </StackPanel>
+
+               <!--Members DataGrid-->
+                <ContentControl Grid.Row="5"
+                            Margin="10"
+                            Content="{Binding CurrentView}"
+                            />
+
+               
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
+
+</Window>
