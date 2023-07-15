@@ -32,3 +32,19 @@ The Hospital Management System is a comprehensive desktop application developed 
 
 ```shell
 git clone https://github.com/PasanAbeysekara/Hospital-Management-System.git
+```
+
+## Contributing
+
+Contributions are welcome! If you have any ideas, bug fixes, or feature implementations, feel free to open an issue or submit a pull request.
+
+Please make sure to review the [Contributing Guidelines](CONTRIBUTING.md) before making any contributions.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For any inquiries or questions, please contact us at [pasankavindaabey@gmail.com](mailto:support@example.com).
+
