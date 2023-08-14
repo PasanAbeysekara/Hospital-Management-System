@@ -1,6 +1,18 @@
-# Hospital Management System (Desktop Application)
+<p align="center">
+  <h1 align="center">Hospital Management System (Desktop Application)</h1>
+     <p align="center">
+   The Hospital Management System is a comprehensive desktop application developed using WPF (Windows Presentation Foundation) and utilizes SQLite as the database engine. This repository encompasses the source code and project files for building a robust and user-friendly hospital management system.
+  </p>
+</p>
+<div align="center">
 
-The Hospital Management System is a comprehensive desktop application developed using WPF (Windows Presentation Foundation) and utilizes SQLite as the database engine. This repository encompasses the source code and project files for building a robust and user-friendly hospital management system.
+  ![C# Badge](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+  ![WPF Badge](https://img.shields.io/badge/WPF-5C2D91?style=for-the-badge&logo=windows&logoColor=white)
+  ![SQLite Badge](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+  ![Entity Framework Badge](https://img.shields.io/badge/Entity_Framework-FF6600?style=for-the-badge&logo=entity-framework&logoColor=white)
+  ![LINQ Badge](https://img.shields.io/badge/LINQ-FF6600?style=for-the-badge&logo=linq&logoColor=white)
+  ![DevExpress Badge](https://img.shields.io/badge/DevExpress-0C4A9E?style=for-the-badge&logo=devexpress&logoColor=white)
+</div>
 
 ## Features
 
